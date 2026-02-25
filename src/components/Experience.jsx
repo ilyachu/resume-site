@@ -3,41 +3,47 @@ import { resumeData } from '../data/resume';
 import './Experience.css';
 
 function Experience() {
-  const [openItem, setOpenItem] = useState(0);
+  const [activeJob, setActiveJob] = useState(null);
 
-  const toggleItem = (index) => {
-    setOpenItem(openItem === index ? null : index);
+  const toggleJob = (index) => {
+    setActiveJob(activeJob === index ? null : index);
   };
 
   return (
-    <section id="experience" className="grid-container border-top">
-      <div className="cell grid-quarter">
-        <div className="sticky-label text-label">Опыт работы</div>
+    <section id="experience" className="container grid-12 section-pad">
+      <div className="section-header">
+        <span className="big-num">03</span>
+        <span className="header-title">ОПЫТ РАБОТЫ</span>
       </div>
-      <div className="cell grid-third" style={{ padding: 0, gridColumn: 'span 9' }}>
-        {resumeData.experience.map((item, index) => (
-          <div key={item.id} className={`accordion-item ${openItem === index ? 'active' : ''}`}>
-            <button className="accordion-header" onClick={() => toggleItem(index)}>
-              <div>
-                <span className="text-label" style={{ marginRight: '1rem', color: index === 0 ? 'var(--accent-amber)' : 'var(--text-secondary)' }}>
-                  {item.period}
-                </span>
-                <span className="accordion-title">{item.position} / {item.company}</span>
+
+      <div className="timeline-container">
+        {resumeData.experience.map((job, index) => (
+          <div
+            key={job.id}
+            className={`job-row ${activeJob === index ? 'active' : ''}`}
+            onClick={() => toggleJob(index)}
+          >
+            <div className="job-header">
+              <span className="job-year">{job.period}</span>
+              <span className="job-role">{job.position}</span>
+              <span className="job-company">{job.company}</span>
+              <div className="job-toggle">+</div>
+            </div>
+            <div className="job-details">
+              <div className="job-details-inner">
+                <div>
+                  <strong>Обязанности:</strong>
+                  <p>{job.description}</p>
+                </div>
+                <div>
+                  <strong>Достижения:</strong>
+                  <ul style={{ listStyle: 'disc', paddingLeft: '1rem' }}>
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i}>{achievement}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <span className="chevron">▼</span>
-            </button>
-            <div className="accordion-content">
-              <p style={{ padding: '0 2rem', marginBottom: '1rem' }}>{item.description}</p>
-              {item.location && (
-                <p style={{ padding: '0 2rem', marginBottom: '1rem', fontSize: '0.8rem' }}>📍 {item.location}</p>
-              )}
-              {item.achievements && (
-                <ul className="achievements-list" style={{ padding: '0 2rem 1.5rem', margin: 0 }}>
-                  {item.achievements.map((achievement, i) => (
-                    <li key={i} style={{ marginBottom: '0.5rem', lineHeight: 1.5 }}>{achievement}</li>
-                  ))}
-                </ul>
-              )}
             </div>
           </div>
         ))}
