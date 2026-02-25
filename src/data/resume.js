@@ -1,7 +1,7 @@
 export const resumeData = {
   name: 'Илья Чумаченков',
   initials: 'ИЧ',
-  photo: '/photo.jpg',
+  photo: '/ilya.jpg',
 
   hero: {
     title: 'Управление\nпроектами\nи командами',

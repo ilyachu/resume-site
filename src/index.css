@@ -482,9 +482,14 @@ footer {
     --s-block: 4rem;
   }
 
-  .hero { min-height: auto; padding-top: 80px; }
-  .hero-text { grid-column: 1 / -1; }
-  .hero-image { grid-column: 1 / -1; height: 40vh; margin-top: 2rem; }
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 3rem;
+    display: block;
+  }
+  .hero-text { grid-column: 1 / -1; padding-right: 0; margin-bottom: 2rem; }
+  .hero-image { grid-column: 1 / -1; height: 45vh; margin-top: 1rem; }
 
   .profile-content { grid-column: 1 / -1; }
 
