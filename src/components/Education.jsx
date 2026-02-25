@@ -3,20 +3,16 @@ import './Education.css';
 
 function Education() {
   return (
-    <section className="section education">
-      <div className="container">
-        <div className="grid">
-          <div className="education-title-col">
-            <h2 className="section-title">Образование</h2>
-          </div>
-          <div className="education-content-col">
-            <div className="education-item">
-              <span className="education-year">{resumeData.education.year}</span>
-              <h3 className="education-university">{resumeData.education.university}</h3>
-              <p className="education-degree">{resumeData.education.degree}</p>
-            </div>
-          </div>
-        </div>
+    <section id="education" className="grid-container border-top">
+      <div className="cell grid-quarter">
+        <div className="sticky-label text-label">Образование</div>
+      </div>
+      <div className="cell grid-half">
+        <span className="text-label" style={{ color: 'var(--accent-amber)', marginBottom: '0.5rem', display: 'block' }}>
+          {resumeData.education.year}
+        </span>
+        <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{resumeData.education.university}</h3>
+        <p className="text-body-sm">{resumeData.education.degree}</p>
       </div>
     </section>
   );

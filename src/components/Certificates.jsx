@@ -3,23 +3,28 @@ import './Certificates.css';
 
 function Certificates() {
   return (
-    <section className="section certificates">
-      <div className="container">
-        <div className="grid">
-          <div className="certificates-title-col">
-            <h2 className="section-title">Сертификаты</h2>
-          </div>
-          <div className="certificates-list-col">
-            <div className="certificates-list">
-              {resumeData.certificates.map((cert, index) => (
-                <div key={cert.id} className="certificate-item">
-                  <span className="certificate-year">{cert.year}</span>
-                  <h3 className="certificate-title">{cert.title}</h3>
-                  <p className="certificate-issuer">{cert.issuer}</p>
-                </div>
-              ))}
+    <section id="certificates" className="grid-container border-top">
+      <div className="cell grid-quarter">
+        <div className="sticky-label text-label">Сертификаты</div>
+      </div>
+      <div className="cell grid-threequarter">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+          {resumeData.certificates.map((cert) => (
+            <div key={cert.id} style={{
+              padding: '1.5rem',
+              border: '1px solid var(--border-color)',
+              background: 'var(--bg-white)'
+            }}>
+              <span className="text-label" style={{ color: 'var(--accent-amber)', marginBottom: '0.5rem', display: 'block' }}>
+                {cert.year}
+              </span>
+              <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{cert.title}</h4>
+              <p className="text-body-sm">{cert.issuer}</p>
+              {cert.description && (
+                <p className="text-body-sm" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>{cert.description}</p>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

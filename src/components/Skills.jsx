@@ -22,33 +22,22 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" className="section skills">
-      <div className="container">
-        <div className="grid">
-          <div className="skills-title-col">
-            <h2 className="section-title">Навыки</h2>
-          </div>
-          <div className="skills-list-col">
-            <div className="skills-grid">
-              {skillCategories.map((category, index) => (
-                <div key={index} className="skills-category">
-                  <h3 className="skills-category-title">{category.title}</h3>
-                  <ul className="skills-list">
-                    {category.skills.map((skill, i) => (
-                      <li key={i} className="skills-item">
-                        <span className="skills-item-icon">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <circle cx="6" cy="6" r="3" fill="currentColor"/>
-                          </svg>
-                        </span>
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+    <section id="skills" className="grid-container border-top">
+      <div className="cell grid-quarter">
+        <div className="sticky-label text-label">Навыки</div>
+      </div>
+      <div className="cell grid-threequarter">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
+          {skillCategories.map((category, index) => (
+            <div key={index}>
+              <h4 className="text-label" style={{ marginBottom: '1rem', color: 'var(--accent-amber)' }}>{category.title}</h4>
+              <div className="pill-container">
+                {category.skills.map((skill, i) => (
+                  <span key={i} className="pill">{skill}</span>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
